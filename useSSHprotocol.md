@@ -62,7 +62,6 @@ HTTPS 与 SSH 都是一种安全的网络连接协议:
      127.0.0.1 指本地ip地址, 7890 指代理的端口.
 
 # 4. 连接到 Remote Repository
-## 4.1 New Repository
 1. 进入储存了密钥的文件夹 (默认在 ***C:/Users/你的用户名/.ssh/*** ),  
    用记事本打开刚刚创建的密钥对的**公钥 (你取的文件名.pub)**,  
    复制里面的**所有内容**.
@@ -83,14 +82,9 @@ HTTPS 与 SSH 都是一种安全的网络连接协议:
    ssh -T git@github.com
    ```
    输入密码后终端给出类似于 `Hi jamesnulliu! You've successfully authenticated, but GitHub does not provide shell access.` 的提示, 说明密钥连接成功.
-## 4.2. 更改 Local Repository 的连接方式
-用 `git remote -v` 查看本地储存库链接方式;  
-如果本地储存库已经用 https 协议链接, 请遵输入以下命令更改 origin 指向的 URL (**xxx 替换成 ssh 连接地址**).  
-```
-git remote set-url origin xxxxxxx
-```
 
 # 5. 用 SSH protocol 进行项目管理
+## 5.1. New Repository
 和 HTTPS 协议唯一不同的地方在于, 在 github 上复制项目链接的时候选择 HTTPS 旁边的 SSH, 点小方块复制连接.  
 
 ![image](/image/ssh-01.jpg)
@@ -104,6 +98,13 @@ clone 完成后将工作区切换到 clone 下来的文件夹 (本地储存库) 
 git remote -v
 ```
 可以看到现在 origin 指向的已经是 ssh 协议的链接了.
+
+## 5.2. 更改已有 Local Repository 的连接方式
+用 `git remote -v` 查看本地储存库链接方式;  
+如果本地储存库已经用 https 协议链接, 请遵输入以下命令更改 origin 指向的 URL (**xxx 替换成 ssh 连接地址**).  
+```
+git remote set-url origin xxxxxxx
+```
 
 ---
 
